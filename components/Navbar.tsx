@@ -59,7 +59,7 @@ const Header = () => {
   };
 
   return (
-    <header className="relative min-h-screen flex flex-col bg-white pb-6">
+    <header className="relative min-h-screen flex flex-col bg-blue-50 pb-6">
       {/* Navbar */}
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
@@ -125,7 +125,7 @@ const Header = () => {
             {/* CTA Button */}
             <div className="hidden md:block">
               <motion.a
-                href="#"
+                href="#contact"
                 whileHover="hover"
                 whileTap={{ scale: 0.95 }}
                 variants={buttonVariants}

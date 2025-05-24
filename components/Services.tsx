@@ -14,7 +14,7 @@ const Services = () => {
       description: "Streamline patient data management with our secure, compliant EHR systems, designed to integrate seamlessly and enhance workflow efficiency.",
       features: ["Effortless Data Management", "HIPAA-Compliant Security", "Intuitive Interface"],
       illustration: Digital,
-      gradient: "from-blue-300 to-blue-500 md:-translate-x-4",
+      gradient: "from-blue-500 to-blue-300 md:-translate-x-4",
       buttonColor: "bg-blue-500 hover:bg-blue-600",
     },
     {
@@ -22,7 +22,7 @@ const Services = () => {
       description: "Empower clinicians with AI-driven diagnostic tools that deliver real-time insights and predictive analytics for faster, more accurate decisions.",
       features: ["Real-Time Decision Support", "Advanced Predictive Analytics", "Reduced Diagnostic Errors"],
       illustration: Robot,
-      gradient: "from-purple-300 to-purple-500 md:translate-x-8",
+      gradient: "from-purple-500 to-purple-300 md:translate-x-8",
       buttonColor: "bg-purple-500 hover:bg-purple-600",
     },
     {
@@ -30,7 +30,7 @@ const Services = () => {
       description: "Transform your healthcare operations with bespoke software tailored to your unique needs, backed by seamless integration and ongoing support.",
       features: ["Custom-Built for You", "Effortless Integration", "Dedicated Support"],
       illustration: Laptop,
-      gradient: "from-green-300 to-green-500 md:-translate-x-2",
+      gradient: "from-green-500 to-green-300 md:-translate-x-2",
       buttonColor: "bg-green-500 hover:bg-green-600",
     },
   ];

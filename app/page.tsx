@@ -12,6 +12,7 @@ import AboutUs from '@/components/About'
 import ContactUs from '@/components/Contact'
 import Services from '@/components/Services'
 import MobileApp from '@/components/MobileApp'
+import Chatbot from '@/components/Chatbot'
 // Animation variants for staggered animations
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -181,7 +182,7 @@ export default function Home() {
 
       <ContactUs/>
       <MobileApp/>
-
+      <Chatbot/>
       
       
       {/* Footer */}
