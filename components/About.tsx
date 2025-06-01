@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
+import Image from 'next/image';
+
 
 const AboutUs = () => {
-  const text = 'At Medirevs, we are committed to transforming healthcare delivery in Ghana through innovative software solutions. Our mission is to leverage technology to improve healthcare accessibility, efficiency, and quality for all Ghanaians.Founded by energetic and innovative young professionals with expertise in technology from both home and abroad, MAAS is at the forefront of healthcare innovation. We are a leading healthcare software development company, specialising in the creation of sophisticated Electronic Health Record (EHR) systems and AI-assisted diagnostic tools.';
+  const text = 'Medirevs is dedicated to transforming healthcare by making it simple, accessible and connected. We bring patients, doctors and pharmacists together through a seamless digital platform convenient appointment booking, telemedicine, and medication services. Our mission is to empower everyone wth the tools to take control of their health, anytime and anywhere.';
   const words = text.split(' ');
 
   // Animation controls for each word
@@ -12,7 +14,7 @@ const AboutUs = () => {
 
   // Word animation variants
   const wordVariants = {
-    hidden: { opacity: 0, color: '#d1d5db' }, // Gray color for unfilled words
+    hidden: { opacity: 0, color: '#00000' }, // Gray color for unfilled words
     visible: (i: number) => ({
       opacity: 1,
       color: '#374151', // Dark gray for filled words
@@ -38,7 +40,7 @@ const AboutUs = () => {
         <div className="flex flex-col items-start">
           <p
             ref={ref}
-            className="text-3xl md:text-5xl font-semibold text-gray-700 leading-relaxed"
+            className="text-3xl md:text-5xl font-semibold leading-relaxed"
           >
             {words.map((word, index) => (
               <motion.span
@@ -55,6 +57,8 @@ const AboutUs = () => {
           </p>
         </div>
       </div>
+        
+
     </section>
   );
 };

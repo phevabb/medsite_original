@@ -1,73 +1,102 @@
 import React from 'react';
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Twitter, Linkedin, X } from 'lucide-react'; // Import Twitter, Linkedin, and X
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-  
   return (
-    <footer className="bg-secondary pt-16 pb-8">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {/* Company Info */}
-          <div>
-            <div className="flex items-center mb-4">
-              <div className="h-8 w-8 rounded-md bg-gradient-to-br from-mediblue-500 to-medipurple-500 flex items-center justify-center text-white font-bold text-xl mr-2">M</div>
-              <span className="font-bold text-lg">MEDIREVS</span>
-            </div>
-            <p className="text-muted-foreground mb-4">
-              Transforming healthcare through innovative AI-powered solutions.
+    <footer className="w-full border-t py-12 md:py-16 lg:py-20 bg-muted">
+      <div className="container px-4 md:px-6 mx-auto">
+        <div className="grid gap-8 lg:grid-cols-4">
+          <div className="space-y-4">
+            <Link href="/" className="flex items-center">
+              <div className=" p-1.5 mr-2">
+                <Image
+                src="https://utfs.io/f/eqXEbyZmWEZ5lOjgSBG2gjEUo09J4XZinGKBQauTkAFfvIHp"
+                alt='logo'
+                width={40}
+                height={40}
+                />
+
+              </div>
+              <span className="font-bold text-xl">Medirevs</span>
+            </Link>
+            <p className="text-sm text-muted-foreground">
+            At Medirevs, we connect and empower the key players in healthcare with tailored digital solutions.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="h-9 w-9 rounded-full bg-foreground/10 flex items-center justify-center text-foreground hover:bg-mediblue-500 hover:text-white transition-colors">
-                <Twitter className="h-4 w-4" />
-              </a>
-              <a href="#" className="h-9 w-9 rounded-full bg-foreground/10 flex items-center justify-center text-foreground hover:bg-mediblue-500 hover:text-white transition-colors">
-                <Linkedin className="h-4 w-4" />
-              </a>
-              <a href="#" className="h-9 w-9 rounded-full bg-foreground/10 flex items-center justify-center text-foreground hover:bg-mediblue-500 hover:text-white transition-colors">
-                <Github className="h-4 w-4" />
-              </a>
+              {/* Use Lucide icons directly */}
+              <Link href="https://twitter.com/yourhandle" className="text-muted-foreground hover:text-primary" aria-label="Visit us on Twitter">
+                <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center">
+                  <Twitter className="h-4 w-4" /> {/* Twitter icon */}
+                </div>
+              </Link>
+              <Link href="https://linkedin.com/company/yourcompany" className="text-muted-foreground hover:text-primary" aria-label="Visit us on LinkedIn">
+                <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center">
+                  <Linkedin className="h-4 w-4" /> {/* LinkedIn icon */}
+                </div>
+              </Link>
+              {/* If you prefer the 'X' icon for Twitter: */}
+              {/* <Link href="https://twitter.com/yourhandle" className="text-muted-foreground hover:text-primary" aria-label="Visit us on X">
+                <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center">
+                  <X className="h-4 w-4" />
+                </div>
+              </Link> */}
             </div>
           </div>
-          
-          {/* Products */}
+
           <div>
-            <h3 className="font-bold text-lg mb-4">Products</h3>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-muted-foreground hover:text-mediblue-600">EHR Systems</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-mediblue-600">AI Diagnostics</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-mediblue-600">Custom Solutions</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-mediblue-600">Mobile App</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-mediblue-600">Data Analytics</a></li>
+            <h3 className="text-sm font-medium mb-4">Product</h3>
+            <ul className="space-y-3 text-sm">
+              {["Features", "Pricing", "Testimonials"].map((item) => (
+                <li key={item}>
+                  <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
-          
-          {/* Company */}
+
           <div>
-            <h3 className="font-bold text-lg mb-4">Company</h3>
-            <ul className="space-y-2">
-              <li><a href="#about" className="text-muted-foreground hover:text-mediblue-600">About Us</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-mediblue-600">Careers</a></li>
-              <li><a href="#partners" className="text-muted-foreground hover:text-mediblue-600">Partners</a></li>
-              <li><a href="#blog" className="text-muted-foreground hover:text-mediblue-600">Blog</a></li>
-              <li><a href="#contact" className="text-muted-foreground hover:text-mediblue-600">Contact</a></li>
+            <h3 className="text-sm font-medium mb-4">Company</h3>
+            <ul className="space-y-3 text-sm">
+              {["About", "Blog", "Press", "Partners"].map((item) => (
+                <li key={item}>
+                  <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
-          
-      
+
+          <div>
+            <h3 className="text-sm font-medium mb-4">Legal</h3>
+            <ul className="space-y-3 text-sm">
+              {["Terms", "Privacy", "Cookies"].map((item) => (
+                <li key={item}>
+                  <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        
-        {/* Bottom Footer */}
-        <div className="pt-8 border-t border-border">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-muted-foreground mb-4 md:mb-0">
-              &copy; {currentYear} MEDIREVS. All rights reserved.
-            </p>
-            <div className="flex space-x-6">
-              <a href="#" className="text-sm text-muted-foreground hover:text-mediblue-600">Privacy Policy</a>
-              <a href="#" className="text-sm text-muted-foreground hover:text-mediblue-600">Terms of Service</a>
-              <a href="#" className="text-sm text-muted-foreground hover:text-mediblue-600">Cookie Policy</a>
-            </div>
+
+        <div className="mt-12 pt-8 border-t flex flex-col md:flex-row justify-between items-center">
+          <p className="text-xs text-muted-foreground">
+            &copy; {new Date().getFullYear()} Medventory. All rights reserved.
+          </p>
+          <div className="flex items-center gap-4 mt-4 md:mt-0">
+            <Link href="/terms" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+              Terms of Service
+            </Link>
+            <Link href="/privacy" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+              Privacy Policy
+            </Link>
+            
           </div>
         </div>
       </div>

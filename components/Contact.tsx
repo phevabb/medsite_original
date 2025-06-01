@@ -46,7 +46,7 @@ const ContactUs = () => {
                 />
               </div>
               
-              <Button className="w-full bg-gradient-to-r transition-colors duration-200 from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
+              <Button className="w-full bg-emerald-500">
                 Send Message
               </Button>
             </form>
@@ -59,7 +59,7 @@ const ContactUs = () => {
               
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                  <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-900 mr-4">
                     <Mail className="h-5 w-5" />
                   </div>
                   <div>
@@ -97,15 +97,34 @@ const ContactUs = () => {
             </div>
             
             {/* Map or Additional Info */}
-            <div className="widget flex-1 bg-gradient-to-br from-blue-500 to-blue-500 text-white">
-              <h3 className="text-xl font-bold mb-6">Partner With Us</h3>
-              <p className="mb-6">
-                Interested in becoming a partner or distributor? We're always looking to expand our network 
-                of healthcare professionals and technology providers.
-              </p>
-              <Button variant="secondary" className="w-full">
-                Become a Partner
-              </Button>
+            <div className="border shadow-sm rounded-3xl p-8">
+              <h3 className="text-xl font-bold mb-6">
+                Find Us in Accra
+              </h3>
+              <div className="relative w-full h-64 rounded-2xl overflow-hidden border border-white/10">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254508.39472635163!2d-0.3909363!3d5.6037168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9084b2b7a773%3A0xbed14ed8650e2dd3!2sAccra%2C%20Ghana!5e0!3m2!1sen!2sus!4v1703123456789!5m2!1sen!2sus"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="rounded-2xl"
+                  title="Medirevs Location in Accra, Ghana"
+                ></iframe>
+
+                {/* Map overlay for futuristic effect */}
+                <div className="absolute inset-0 pointer-events-none rounded-2xl"></div>
+              </div>
+
+              <div className="mt-4 p-4 bg-gradient-to-r from-emerald-500/10 to-green-500/10 rounded-xl border border-emerald-500/20">
+                <p className="text-sm text-gray-400 text-center">
+                  <span className="text-emerald-400 font-medium">📍 Located in the heart of Accra</span>
+                  <br />
+                  Serving healthcare facilities across Ghana
+                </p>
+              </div>
             </div>
           </div>
         </div>

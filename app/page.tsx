@@ -13,6 +13,7 @@ import ContactUs from '@/components/Contact'
 import Services from '@/components/Services'
 import MobileApp from '@/components/MobileApp'
 import Chatbot from '@/components/Chatbot'
+import ExpandableIframeChatbot from '@/components/Chatbot'
 // Animation variants for staggered animations
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -56,10 +57,9 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Our Products</span>
               <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">Innovative Digital Healthcare Solutions</h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Enhancing efficiency, accessibility, and decision-making for healthcare providers and patients
+                Your everyday partner in health
               </p>
             </motion.div>
             
@@ -72,18 +72,18 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
                 <Card className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-all">
-                  <div className="h-3 bg-blue-500"></div>
+                  <div className="h-3 bg-blue-900"></div>
                   <CardHeader>
                     <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center mb-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                       </svg>
                     </div>
-                    <CardTitle>Medical Health Records System</CardTitle>
+                    <CardTitle>Quick and convenient care</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-600 mb-4">A secure, cloud-based platform that allows healthcare providers to collect, store, manage, and access patient health information seamlessly.</p>
-                    <ul className="space-y-2">
+                    <p className="text-gray-600 mb-4">Schedule video or in-person appointment with ease and recieve timely reminders to you never miss a visit.</p>
+                    {/* <ul className="space-y-2">
                       <li className="flex items-center text-gray-600">
                         <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> Real-time data access
                       </li>
@@ -93,7 +93,7 @@ export default function Home() {
                       <li className="flex items-center text-gray-600">
                         <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> Industry-standard security
                       </li>
-                    </ul>
+                    </ul> */}
                   </CardContent>
                 </Card>
               </motion.div>
@@ -113,11 +113,11 @@ export default function Home() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                       </svg>
                     </div>
-                    <CardTitle>AI Doctor</CardTitle>
+                    <CardTitle>Care tailored to you</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-600 mb-4">AI-powered diagnostic assistant that helps healthcare professionals make timely and data-driven clinical decisions.</p>
-                    <ul className="space-y-2">
+                    <p className="text-gray-600 mb-4">Connect with your healthcare providers anytime for advice, support, and preventive care when you need it most.</p>
+                    {/* <ul className="space-y-2">
                       <li className="flex items-center text-gray-600">
                         <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> Predictive analytics
                       </li>
@@ -127,7 +127,7 @@ export default function Home() {
                       <li className="flex items-center text-gray-600">
                         <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> Personalized treatment recommendations
                       </li>
-                    </ul>
+                    </ul> */}
                   </CardContent>
                 </Card>
               </motion.div>
@@ -147,11 +147,11 @@ export default function Home() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                       </svg>
                     </div>
-                    <CardTitle>Patient App</CardTitle>
+                    <CardTitle>Keep your health organized</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-600 mb-4">Mobile application that empowers patients to access their health records, schedule appointments, and communicate with healthcare providers.</p>
-                    <ul className="space-y-2">
+                    <p className="text-gray-600 mb-4">Securely store all your medical information in one place for yourself and your loved ones.</p>
+                    {/* <ul className="space-y-2">
                       <li className="flex items-center text-gray-600">
                         <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> Secure patient portal
                       </li>
@@ -161,7 +161,7 @@ export default function Home() {
                       <li className="flex items-center text-gray-600">
                         <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> Telemedicine integration
                       </li>
-                    </ul>
+                    </ul> */}
                   </CardContent>
                 </Card>
               </motion.div>
@@ -177,16 +177,13 @@ export default function Home() {
       
   
 
-      {/* Newsletter */}
-      <Blog/>
 
       <ContactUs/>
       <MobileApp/>
-      <Chatbot/>
+      <ExpandableIframeChatbot/>
       
       
-      {/* Footer */}
-      <Footer/>
+   
     </main>
   )
 }

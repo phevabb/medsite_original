@@ -1,34 +1,95 @@
-import React from 'react';
+"use client"
 
-const Chatbot = () => {
+import { useState } from "react"
+import { MessageCircle, X } from "lucide-react"
+
+const ExpandableIframeChatbot = () => {
+  const [isExpanded, setIsExpanded] = useState(false)
+
+  const toggleChat = () => {
+    setIsExpanded(!isExpanded)
+  }
+
   return (
-    // The main container for the chatbot.
-    // We use fixed positioning to place it relative to the viewport,
-    // ensuring it stays in place even when the user scrolls.
-    <div
-      style={{
-        position: 'fixed', // Positions the element relative to the viewport
-        bottom: '20px',    // 20px from the bottom edge
-        right: '20px',     // 20px from the right edge
-        width: '350px',    // Fixed width for the chatbot iframe (adjust as needed)
-        height: '500px',   // Fixed height for the chatbot iframe (adjust as needed)
-        zIndex: 1000,      // Ensures the chatbot is on top of other content
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Adds a subtle shadow
-        borderRadius: '12px', // Rounded corners for a softer look
-        overflow: 'hidden', // Hides any overflow content
-        backgroundColor: '#f0f2f5', // A light background color
-      }}
-      className="rounded-xl shadow-lg overflow-hidden bg-gray-100" // Tailwind classes for rounded corners, shadow, overflow, and background
-    >
-      <iframe
-        src="https://your-streamlit-app-url.streamlit.app/?embed=true" // IMPORTANT: Replace with your actual Streamlit app URL
-        width="100%" // Make the iframe take the full width of its parent div
-        height="100%" // Make the iframe take the full height of its parent div
-        title="My Streamlit Chatbot"
-        style={{ border: 'none' }} // Removes the default iframe border
-      ></iframe>
-    </div>
-  );
-};
+    <div className="fixed bottom-5 right-5 z-50">
+      {/* Collapsed State - Fully Rounded Button */}
+      {!isExpanded && (
+        <button
+          onClick={toggleChat}
+          className="w-16 h-16 bg-blue-900 hover:bg-blue-700 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-110 flex items-center justify-center"
+          aria-label="Open chat"
+        >
+          <MessageCircle className="w-6 h-6 text-white" />
+        </button>
+      )}
 
-export default Chatbot;
+      {/* Expanded State - Chat Interface with Iframe */}
+      {isExpanded && (
+        <div
+          className="w-80 h-96 bg-white rounded-lg shadow-xl transition-all duration-300 ease-in-out transform animate-in slide-in-from-bottom-4 overflow-hidden"
+          style={{
+            animation: isExpanded ? "expandChat 0.3s ease-out" : "collapseChat 0.3s ease-in",
+          }}
+        >
+          {/* Header */}
+          <div className="bg-blue-900 text-white p-3 flex items-center justify-between">
+            <h3 className="font-medium text-sm">AI Assistant</h3>
+            <button
+              onClick={toggleChat}
+              className="text-white hover:bg-blue-700 rounded-full p-1 transition-colors duration-200"
+              aria-label="Close chat"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Iframe Container */}
+          <div className="h-full">
+            <iframe
+              src="https://medwebsitechatbot.streamlit.app/?embed=true"
+              width="100%"
+              height="100%"
+              title="Medical Website Chatbot"
+              style={{
+                border: "none",
+                height: "calc(100% - 48px)", // Subtract header height
+              }}
+              allow="camera; microphone"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Custom CSS for animations */}
+      <style jsx>{`
+        @keyframes expandChat {
+          0% {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+          }
+          100% {
+            width: 320px;
+            height: 384px;
+            border-radius: 8px;
+          }
+        }
+
+        @keyframes collapseChat {
+          0% {
+            width: 320px;
+            height: 384px;
+            border-radius: 8px;
+          }
+          100% {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+          }
+        }
+      `}</style>
+    </div>
+  )
+}
+
+export default ExpandableIframeChatbot

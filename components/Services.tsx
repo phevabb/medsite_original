@@ -1,132 +1,238 @@
-import React from 'react';
-import { Button } from "@/components/ui/button";
-import { motion } from 'framer-motion';
-import Laptop from '@/public/system-removebg-preview.png'
-import Robot from '@/public/robot-removebg-preview.png'
-import Digital from '@/public/computer-with-keyboard-mouse-cartoon-style-isolated.png'
-import Image from 'next/image';
-
+"use client"
+import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
+import Image from "next/image"
+import { ArrowRight, CheckCircle } from "lucide-react"
 
 const Services = () => {
   const services = [
     {
-      title: "Electronic Health Record Systems",
-      description: "Streamline patient data management with our secure, compliant EHR systems, designed to integrate seamlessly and enhance workflow efficiency.",
-      features: ["Effortless Data Management", "HIPAA-Compliant Security", "Intuitive Interface"],
-      illustration: Digital,
-      gradient: "from-blue-500 to-blue-300 md:-translate-x-4",
-      buttonColor: "bg-blue-500 hover:bg-blue-600",
+      title: "For Patients",
+      subtitle: "Your health journey, simplified",
+      description:
+        "Experience healthcare like never before with our patient-centered platform designed to put you in control of your health.",
+      features: [
+        "Book doctors and pharmacists instantly",
+        "Consult online anytime, anywhere",
+        "Get your prescriptions filled fast",
+        "Access your medical records securely",
+      ],
+      illustration: "https://images.pexels.com/photos/5355697/pexels-photo-5355697.jpeg",
+      buttonText: "Start Your Journey",
+      accentColor: "blue",
     },
     {
-      title: "AI-Assisted Diagnostic Tools",
-      description: "Empower clinicians with AI-driven diagnostic tools that deliver real-time insights and predictive analytics for faster, more accurate decisions.",
-      features: ["Real-Time Decision Support", "Advanced Predictive Analytics", "Reduced Diagnostic Errors"],
-      illustration: Robot,
-      gradient: "from-purple-500 to-purple-300 md:translate-x-8",
-      buttonColor: "bg-purple-500 hover:bg-purple-600",
+      title: "For Doctors",
+      subtitle: "Practice medicine, we'll handle the rest",
+      description:
+        "Focus on what matters most - your patients. Our comprehensive platform streamlines your practice management and enhances patient care.",
+      features: [
+        "Manage appointments with ease",
+        "Reach more patients with telemedicine",
+        "Securely access patient records",
+        "Streamlined billing and documentation",
+      ],
+      illustration: "https://images.pexels.com/photos/5355851/pexels-photo-5355851.jpeg",
+      buttonText: "Join Our Network",
+      accentColor: "emerald",
     },
     {
-      title: "Custom Software Solutions",
-      description: "Transform your healthcare operations with bespoke software tailored to your unique needs, backed by seamless integration and ongoing support.",
-      features: ["Custom-Built for You", "Effortless Integration", "Dedicated Support"],
-      illustration: Laptop,
-      gradient: "from-green-500 to-green-300 md:-translate-x-2",
-      buttonColor: "bg-green-500 hover:bg-green-600",
+      title: "For Pharmacists",
+      subtitle: "Modern pharmacy management",
+      description:
+        "Transform your pharmacy operations with digital tools that connect you directly with patients and healthcare providers.",
+      features: [
+        "Receive and manage digital prescriptions",
+        "Track orders and inventory effortlessly",
+        "Connect directly with patients and doctors",
+        "Automated insurance verification",
+      ],
+      illustration: "https://images.pexels.com/photos/3825457/pexels-photo-3825457.jpeg",
+      buttonText: "Modernize Your Pharmacy",
+      accentColor: "purple",
     },
-  ];
+  ]
 
-  // Animation variants for hover effect
-  const cardVariants = {
-    rest: {
-      scale: 1,
-      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-      transition: { duration: 0.3 },
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+        delayChildren: 0.2,
+      },
     },
-    hover: {
-      scale: 1.02,
-      boxShadow: "0 8px 24px rgba(0, 0, 0, 0.15)",
-      background: "rgba(255, 255, 255, 0.8)",
-      transition: { duration: 0.3 },
-    },
-  };
+  }
 
-  // Animation variants for page load (diagonal tilt/zigzag)
-  const loadVariants = {
+  const itemVariants = {
     hidden: {
       opacity: 0,
-      y: 50,
-      rotateX: 10, // Tilt on X-axis for diagonal effect
-      rotateY: -10, // Tilt on Y-axis for diagonal effect
+      y: 60,
+      scale: 0.95,
     },
-    visible: (index: number) => ({
+    visible: {
       opacity: 1,
       y: 0,
-      rotateX: 0,
-      rotateY: 0,
+      scale: 1,
       transition: {
         type: "spring",
         stiffness: 100,
         damping: 15,
-        delay: index * 0.2, // Stagger each card by 0.2s
-        duration: 0.6,
+        duration: 0.8,
       },
-    }),
-  };
+    },
+  }
+
+  const imageVariants = {
+    hidden: {
+      opacity: 0,
+      x: 50,
+      scale: 0.9,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 80,
+        damping: 20,
+        duration: 1,
+      },
+    },
+  }
+
+  const getAccentColors = (color: string) => {
+    const colors = {
+      blue: {
+        bg: "bg-blue-50",
+        text: "text-blue-900",
+        button: "bg-blue-900 hover:bg-blue-700",
+        border: "border-blue-200",
+      },
+      emerald: {
+        bg: "bg-emerald-50",
+        text: "text-emerald-600",
+        button: "bg-emerald-600 hover:bg-emerald-700",
+        border: "border-emerald-200",
+      },
+      purple: {
+        bg: "bg-purple-50",
+        text: "text-purple-600",
+        button: "bg-purple-600 hover:bg-purple-700",
+        border: "border-purple-200",
+      },
+    }
+    return colors[color as keyof typeof colors]
+  }
 
   return (
-    <section id="services" className="py-16 bg-gray-50">
+    <section id="services" className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">Our Services</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover innovative solutions crafted to elevate healthcare delivery, streamline operations, and improve patient outcomes.
+        {/* Header */}
+        <motion.div
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Healthcare Solutions for
+            <span className="text-blue-900"> Everyone</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Whether you're seeking care, providing treatment, or dispensing medications, our platform is designed to
+            simplify and enhance your healthcare experience.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="space-y-6">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              className={`w-full bg-gradient-to-r ${service.gradient} rounded-3xl p-8 shadow-sm flex flex-col md:flex-row items-center gap-8 relative`}
-              variants={{ ...cardVariants, ...loadVariants }} // Merge both variant sets
-              initial="hidden" // Start with load animation
-              animate="visible" // Animate to visible state
-              whileHover="hover" // Apply hover effect
-              custom={index} // Pass index for staggered animation
-              viewport={{ once: true }} // Animate only once when in view
-              aria-labelledby={`service-title-${index}`}
-            >
-              <div className="flex-1">
-                <h3 id={`service-title-${index}`} className="text-2xl font-bold text-gray-800 mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 mb-6 text-base">{service.description}</p>
-                <div className="mb-6">
-                  {service.features.map((feature, i) => (
-                    <div key={i} className="flex items-center mb-3">
-                      <div className="h-2 w-2 rounded-full bg-gray-800 mr-3"></div>
-                      <span className="text-sm text-gray-700">{feature}</span>
+        {/* Services */}
+        <motion.div
+          className="space-y-32"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          viewport={{ once: true }}
+        >
+          {services.map((service, index) => {
+            const isEven = index % 2 === 0
+            const colors = getAccentColors(service.accentColor)
+
+            return (
+              <motion.div key={index} className="relative" variants={itemVariants}>
+                <div
+                  className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${!isEven ? "lg:grid-flow-col-dense" : ""}`}
+                >
+                  {/* Content */}
+                  <div className={`${!isEven ? "lg:col-start-2" : ""} space-y-8`}>
+                    <div className="space-y-4">
+                      <div
+                        className={`inline-flex items-center px-4 py-2 rounded-full ${colors.bg} ${colors.border} border`}
+                      >
+                        <span className={`text-sm font-semibold ${colors.text}`}>Healthcare Solution</span>
+                      </div>
+
+                      <h3 className="text-3xl md:text-4xl font-bold text-gray-900">{service.title}</h3>
+
+                      <p className={`text-xl font-medium ${colors.text}`}>{service.subtitle}</p>
+
+                      <p className="text-lg text-gray-600 leading-relaxed">{service.description}</p>
                     </div>
-                  ))}
+
+                    {/* Features */}
+                    <div className="space-y-4">
+                      {service.features.map((feature, i) => (
+                        <motion.div
+                          key={i}
+                          className="flex items-start gap-3"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.5 + i * 0.1 }}
+                        >
+                          <CheckCircle className={`w-6 h-6 ${colors.text} mt-0.5 flex-shrink-0`} />
+                          <span className="text-gray-700 text-lg">{feature}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    {/* CTA Button */}
+                    <div className="pt-4">
+                      <Button
+                        size="lg"
+                        className={`${colors.button} text-white px-8 py-4 font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group`}
+                      >
+                        {service.buttonText}
+                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Image */}
+                  <motion.div className={`${!isEven ? "lg:col-start-1" : ""} relative`} variants={imageVariants}>
+                    <div className={`relative rounded-2xl overflow-hidden shadow-sm ${colors.bg} p-2`}>
+                      <Image
+                        src={service.illustration || "/placeholder.svg"}
+                        alt={`${service.title} illustration`}
+                        width={500}
+                        height={400}
+                        className="w-full object-cover h-[600px] rounded-xl"
+                      />
+
+                      {/* Decorative elements */}
+                
+                      <div
+                        className={`absolute -bottom-4 -left-4 w-16 h-16 ${colors.bg} rounded-full opacity-40`}
+                      ></div>
+                    </div>
+                  </motion.div>
                 </div>
-              </div>
-              {/* Illustration positioned at bottom right */}
-              <div className="absolute bottom-4 right-8">
-                <Image
-                src ={service.illustration}
-                alt="illustration"
-                width={150}
-                height={150}
-                />
-                
-                
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            )
+          })}
+        </motion.div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Services;
+export default Services

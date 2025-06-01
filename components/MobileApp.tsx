@@ -28,7 +28,7 @@ const MobileApp = () => {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-br from-mediblue-50 to-medipurple-50">
+    <section id='product' className="py-16 bg-gradient-to-br from-mediblue-50 to-medipurple-50">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="w-full lg:w-1/2 mb-10 lg:mb-0">
@@ -39,7 +39,7 @@ const MobileApp = () => {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              MEDIREVS Mobile App
+              MEDIREVS Mobile App(Doctorev)
             </motion.h2>
             <motion.p 
               className="text-lg text-muted-foreground mb-8"
@@ -48,9 +48,8 @@ const MobileApp = () => {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              Access our powerful healthcare solutions on the go with our 
-              intuitive and feature-rich mobile application. Stay connected 
-              with patients, manage records, and make informed decisions from anywhere.
+            Access comprehensive healthcare services anytime, anywhere with our easy-to-use mobile app. Stay connected with patients, manage health
+            records securely, and make well-informed decisions on the go.
             </motion.p>
             
             <div className="space-y-4 mb-8">
@@ -61,11 +60,11 @@ const MobileApp = () => {
                 },
                 {
                   title: "Real-time AI Diagnostics",
-                  description: "Get AI-powered insights and recommendations in real-time."
+                  description: "Receive timely insights and recommendations to support clinical decisions."
                 },
                 {
                   title: "Seamless Integration",
-                  description: "Works perfectly with your existing hospital information systems."
+                  description: "Effortlessly works with your existing hospital and clinic systems."
                 }
               ].map((feature, index) => (
                 <motion.div

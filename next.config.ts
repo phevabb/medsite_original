@@ -15,7 +15,13 @@ const nextConfig: NextConfig = {
         protocol :'https',
         hostname: 'img.freepik.com',
         pathname: '/free-vector/**'
-      }
+      },
+
+      {
+        protocol: 'https',
+        hostname: 'utfs.io', // Add the hostname
+        pathname: '/f/**',     // Allow all paths under this domain
+      },
 
     ]
   }
