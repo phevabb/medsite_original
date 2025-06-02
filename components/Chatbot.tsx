@@ -32,7 +32,7 @@ const ExpandableIframeChatbot = () => {
           }}
         >
           {/* Header */}
-          <div className="bg-blue-900 text-white p-3 flex items-center justify-between">
+          <div className="bg-blue-900' text-white p-3 flex items-center justify-between">
             <h3 className="font-medium text-sm">AI Assistant</h3>
             <button
               onClick={toggleChat}
